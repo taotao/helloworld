@@ -9,7 +9,4 @@ before_install:
   - docker pull taotaohsu/helloworld-docker
 
 script:
-  - echo $TRAVIS_BUILD_DIR
-  - ls $TRAVIS_BUILD_DIR
-  - docker run -v $TRAVIS_BUILD_DIR:/tmp/repo taotaohsu/helloworld-docker /bin/bash -c "ls /tmp && ls /tmp/repo && cd /tmp/repo && autoreconf --install && ./configure && make -j8"
-  - ${TRAVIS_BUILD_DIR}/bin/helloworld
+  - docker run -v $TRAVIS_BUILD_DIR:/tmp/build_dir taotaohsu/helloworld-docker /bin/bash -c "cd /tmp/build_dir && autoreconf --install && ./configure && make -j8"
