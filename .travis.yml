@@ -1,0 +1,12 @@
+sudo: required
+
+language: c
+
+services:
+  - docker
+
+before_install:
+  - docker pull taotaohsu/helloworld-docker
+
+script:
+  - autoreconf -i && ./configure && make -j8
